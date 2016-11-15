@@ -8,43 +8,59 @@ int back_ground = 255;
 void draw()
 {
   background(back_ground);
-  loadingScreen();
+  switch(game_state)
+  {
+    case 0:
+    loadingScreen();
+    
+    case 1:
+    
+  }
 }
 
 int text_color=0;
-int theta;
+float theta;
 int game_state =0;
-
+boolean loadComplete =false;
 void loadingScreen()
 {
    fill(text_color);
    text("Hold E",(width/2)-18,(height/2)+5);
    noFill();
-   strokeWeight(3);
+   strokeWeight(4);
    arc(width/2,height/2,100,100,0,theta);
     if(keyPressed)
     {
-     if((key == 'e' || key == 'E') && (game_state == 0));
+     if(key == 'e' || key == 'E');
      {
-       if(frameCount % 30 == 0)
-       {
-          theta++;
-          println(theta);
-       }
-      if(theta == 7)
-      {
-          game_state = 1;
-          println("gamestate");
-      }
+         if(frameCount % 2 == 0)
+         {
+            theta ++;
+            println(theta);
+         }
+
+        if(theta == 7)
+        {
+          loadComplete = true;
+        }
      }
     }
-    
-    if(game_state == 1)
+    else
     {
-       if(frameCount % 2 ==0 )
+       if(frameCount % 2 == 0 && theta != 7)
        {
-         back_ground--;
-         text_color++;
+          theta --;
        }
-     }
+    }
+     
+    if((loadComplete == true) && (back_ground !=0))
+    {
+      back_ground -- ;
+      text_color ++;
+    }
+    if(back_ground == 0)
+    {
+      game_state = 1;
+      println(game_state);
+    }
 }
