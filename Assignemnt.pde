@@ -1,6 +1,7 @@
 void setup()
 {
-   size(1000,800); 
+   size(1000,800);
+   frameRate(60);
 }
 
 //Global variable for the hud state
@@ -77,14 +78,24 @@ void loadingScreen()
     }
 }
 
+PImage img;
+void stars()
+{
+  img =loadImage("stars.jpg");
+  tint(255,a);
+  image(img,0,0);
+}
+
 int a=0;
 void drawShip()
 {
-  
-  if(frameCount % 5 == 0 && (a !=255))
+  stars();
+  if(frameCount % 2 == 0 && (a !=255))
   {
     a += 5;
   }
+  
+  stroke(0,255,255,a);
   fill(0,0,255,a);
   //top left bar
    beginShape();
@@ -114,16 +125,33 @@ void drawShip()
      vertex((width/2)+200,0);
    endShape();
    
-   fill(0,0,140,a-100);
+   fill(0,0,140,a);
    //dashboard
    beginShape();
-     vertex(0,(height/2)+250);
-     vertex((width/2)-150,(height/2)+100);
-     vertex((width/2)+150,(height/2)+100);
-     vertex(width,(height/2)+250);
-     vertex(width,height);
+     vertex(0,(height/2)+100);
+     vertex((width/2)-150,(height/2)+250);
+     vertex((width/2)-150,height);
      vertex(0,height);
    endShape();
+   
+   beginShape();
+     vertex((width/2)+150,(height/2)+250);
+     vertex(width,(height/2)+100);
+     vertex(width,height);
+     vertex((width/2)+150,height);
+   endShape();
+   
+   fill(0,0,160,a-100);
+   beginShape();
+     vertex(0,(height/2)+100);
+     vertex(width/2,height/2);
+     vertex(width,(height/2)+100);
+     vertex((width/2)+150,(height/2)+250);
+     vertex((width/2)+150,height);
+     vertex((width/2)-150,height);
+     vertex((width/2)-150,(height/2)+250);    
+   endShape();
+   
    
    fill(255,0,0,a);
    //middle bar-inner shape
