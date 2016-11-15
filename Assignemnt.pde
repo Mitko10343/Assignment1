@@ -63,11 +63,11 @@ void loadingScreen()
     if((loadComplete == true) && (back_ground !=0))
     {
       back_ground -- ;
-      text_color ++;
     }
     if(back_ground == 0)
     {
       clear();
+      text_color=255;
       text("Systems are now operational",(width/2)-100,height/2);
       if(frameCount % (60*3) == 0)
       {
@@ -77,39 +77,60 @@ void loadingScreen()
     }
 }
 
+int a=0;
 void drawShip()
 {
-  fill(0,0,255,100);
+  
+  if(frameCount % 5 == 0 && (a !=255))
+  {
+    a += 5;
+  }
+  fill(0,0,255,a);
+  //top left bar
    beginShape();
      vertex(0,0);
-     vertex(150,0);
+     vertex(300,0);
      vertex(100,50);
      vertex(50,50);
      vertex(50,150);
-     vertex(0,200);
+     vertex(0,300);
    endShape();
    
+   //top right bar
    beginShape();
      vertex(width,0);
-     vertex(width-150,0);
+     vertex(width-300,0);
      vertex(width-100,50);
      vertex(width-50,50);
      vertex(width-50,150);
-     vertex(width,200);
+     vertex(width,300);
    endShape();
    
+   //middle bar-outter shape
    beginShape();
      vertex((width/2)-200,0);
-     vertex((width/2)-200,150);
-     vertex((width/2)+200,150);
+     vertex((width/2)-150,150);
+     vertex((width/2)+150,150);
      vertex((width/2)+200,0);
    endShape();
    
-   fill(255,0,0);
+   fill(0,0,140,a-100);
+   //dashboard
+   beginShape();
+     vertex(0,(height/2)+250);
+     vertex((width/2)-150,(height/2)+100);
+     vertex((width/2)+150,(height/2)+100);
+     vertex(width,(height/2)+250);
+     vertex(width,height);
+     vertex(0,height);
+   endShape();
+   
+   fill(255,0,0,a);
+   //middle bar-inner shape
    beginShape();
      vertex((width/2)-150,25);
-     vertex((width/2)-150,125);
-     vertex((width/2)+150,125);
+     vertex((width/2)-100,125);
+     vertex((width/2)+100,125);
      vertex((width/2)+150,25);
    endShape();
 }
