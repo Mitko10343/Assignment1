@@ -1,4 +1,5 @@
 Fuel fuel_meter;
+Radar radar;
 
 void setup()
 {
@@ -6,6 +7,7 @@ void setup()
    frameRate(60);
    
    fuel_meter = new Fuel();
+   radar =new Radar();
 }
 
 //Global variable for the hud state
@@ -120,4 +122,5 @@ void drawShip()
   line(width/2,height-300,width/2,height-400);
   
   fuel_meter.Fuel();
+  radar.Radar();
 }
