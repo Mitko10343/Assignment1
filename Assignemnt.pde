@@ -1,7 +1,11 @@
+Fuel fuel_meter;
+
 void setup()
 {
-   size(1000,800);
+   size(1200,800);
    frameRate(60);
+   
+   fuel_meter = new Fuel();
 }
 
 //Global variable for the hud state
@@ -89,76 +93,31 @@ void stars()
 int a=0;
 void drawShip()
 {
-  stars();
+  //stars();
   if(frameCount % 2 == 0 && (a !=255))
   {
     a += 5;
   }
   
-  stroke(0,255,255,a);
-  fill(0,0,255,a);
-  //top left bar
-   beginShape();
-     vertex(0,0);
-     vertex(300,0);
-     vertex(100,50);
-     vertex(50,50);
-     vertex(50,150);
-     vertex(0,300);
-   endShape();
-   
-   //top right bar
-   beginShape();
-     vertex(width,0);
-     vertex(width-300,0);
-     vertex(width-100,50);
-     vertex(width-50,50);
-     vertex(width-50,150);
-     vertex(width,300);
-   endShape();
-   
-   //middle bar-outter shape
-   beginShape();
-     vertex((width/2)-200,0);
-     vertex((width/2)-150,150);
-     vertex((width/2)+150,150);
-     vertex((width/2)+200,0);
-   endShape();
-   
-   fill(0,0,140,a);
-   //dashboard
-   beginShape();
-     vertex(0,(height/2)+100);
-     vertex((width/2)-150,(height/2)+250);
-     vertex((width/2)-150,height);
-     vertex(0,height);
-   endShape();
-   
-   beginShape();
-     vertex((width/2)+150,(height/2)+250);
-     vertex(width,(height/2)+100);
-     vertex(width,height);
-     vertex((width/2)+150,height);
-   endShape();
-   
-   fill(0,0,160,a-100);
-   beginShape();
-     vertex(0,(height/2)+100);
-     vertex(width/2,height/2);
-     vertex(width,(height/2)+100);
-     vertex((width/2)+150,(height/2)+250);
-     vertex((width/2)+150,height);
-     vertex((width/2)-150,height);
-     vertex((width/2)-150,(height/2)+250);    
-   endShape();
-   
-   
-   fill(255,0,0,a);
-   //middle bar-inner shape
-   beginShape();
-     vertex((width/2)-150,25);
-     vertex((width/2)-100,125);
-     vertex((width/2)+100,125);
-     vertex((width/2)+150,25);
-   endShape();
+  stroke(0,100,255,a);
+  fill(115,113,147,a);
+  
+  //Dashboard
+  beginShape();
+    vertex(0,height);
+    vertex(0,height-200);
+    vertex(100,height-250);
+    vertex(300,height-300);
+    vertex(900,height-300);
+    vertex(1100,height-250);
+    vertex(width,height-200);
+    vertex(width,height);
+  endShape();
+  
+  //crosshair
+  noFill();
+  arc(width/2,height-300,300,200,radians(-180),radians(0));
+  line(width/2,height-300,width/2,height-400);
+  
+  fuel_meter.Fuel();
 }
