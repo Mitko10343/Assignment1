@@ -6,15 +6,17 @@ void setup()
    size(1200,800);
    frameRate(60);
    
-   fuel_meter = new Fuel();
-   radar =new Radar();
+   fuel_meter = new Fuel(100,height-170,30,120,height-164);
+   radar =new Radar(width-180,height-160,150,150,width-105,height-160);
 }
+
+
+
 
 //Global variable for the hud state
 int game_state =0;
-
 //global variable for the background
-int back_ground = 255;
+int back_ground =255;
 void draw()
 {
   background(back_ground);
@@ -28,10 +30,18 @@ void draw()
     case 1:
     {
       drawShip();
+      radar.drawRadar();
+      radar.rotateRadar();
+      fuel_meter.drawFuel();
       break;
     }
   }
 }
+
+
+
+
+
 
 int text_color=0;
 float theta;
@@ -45,19 +55,19 @@ void loadingScreen()
    arc(width/2,height/2,100,100,0,theta);
     if(keyPressed)
     {
-     if(key == 'e' || key == 'E');
-     {
-         if(frameCount % 2 == 0)
-         {
-            theta ++;
-            println(theta);
-         }
-
-        if(theta == 7)
-        {
-          loadComplete = true;
-        }
-     }
+       if(key == 'e' || key == 'E');
+       {
+           if(frameCount % 2 == 0)
+           {
+              theta ++;
+              println(theta);
+           }
+  
+          if(theta == 7)
+          {
+            loadComplete = true;
+          }
+       }
     }
     else
     {
@@ -84,13 +94,39 @@ void loadingScreen()
     }
 }
 
-PImage img;
+
+
+
+/* int angle=0;
 void stars()
 {
+  PImage img;
+ 
+  
   img =loadImage("stars.jpg");
   tint(255,a);
-  image(img,0,0);
-}
+  pushMatrix();
+  translate(width/2, height/2);
+  rotate(angle);
+  translate(-img.width/2, -img.height/2);
+  image(img,0,0,width*2,height*2);
+  popMatrix();
+  if(keyPressed)
+  {
+    if(key == 'd' || key =='D')
+    {
+       angle ++; 
+    }
+    if( key == 'a' || key =='A')
+    {
+      angle --;
+    }
+  }
+}*/
+
+
+
+
 
 int a=0;
 void drawShip()
@@ -98,7 +134,7 @@ void drawShip()
   //stars();
   if(frameCount % 2 == 0 && (a !=255))
   {
-    a += 5;
+    a += 20;
   }
   
   stroke(0,100,255,a);
@@ -116,11 +152,9 @@ void drawShip()
     vertex(width,height);
   endShape();
   
+  arc(width/2,0,width*2,400,0,180);
   //crosshair
   noFill();
   arc(width/2,height-300,300,200,radians(-180),radians(0));
   line(width/2,height-300,width/2,height-400);
-  
-  fuel_meter.Fuel();
-  radar.Radar();
 }
