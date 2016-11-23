@@ -17,6 +17,7 @@ class Guns
     {  
        noFill();
        stroke(195,9,216);
+       strokeWeight(1);
        arc(centerX,centerY,Width,Height,radians(-180),radians(0));
        line(centerX,centerY,centerX,centerY-20);
     }

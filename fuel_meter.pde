@@ -20,8 +20,10 @@ class Fuel
      fuelMeter();
      fill(0);
      stroke(76,2,152);
+     strokeWeight(1);
      rect(x,y,Width,Height);
      line(x,meterY,x+Width,meterY);
+     fill(76,2,152);
      text("FUEL" ,x,height-30);
     
   }

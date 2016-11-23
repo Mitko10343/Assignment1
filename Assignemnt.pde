@@ -46,6 +46,14 @@ void draw()
     }
     case 1:
     {
+      if(music == true)
+      {
+        hyperJump();
+      }
+      else
+      {
+         stars();
+      }
       drawShip();
       radar.drawRadar();
       radar.rotateRadar();
@@ -118,32 +126,22 @@ void loadingScreen()
 
 
 
-/* int angle=0;
+
 void stars()
 {
-  PImage img;
- 
-  
-  img =loadImage("stars.jpg");
-  tint(255,a);
-  pushMatrix();
-  translate(width/2, height/2);
-  rotate(angle);
-  translate(-img.width/2, -img.height/2);
-  image(img,0,0,width*2,height*2);
-  popMatrix();
-  if(keyPressed)
+  if(frameCount % 10 == 0)
   {
-    if(key == 'd' || key =='D')
-    {
-       angle ++; 
-    }
-    if( key == 'a' || key =='A')
-    {
-      angle --;
-    }
+    strokeWeight(6);
+    stroke(random(255),random(255),random(255));
+    point(random(width),random(height/3,height-300));
+    point(random(width),random(height/3,height-300));
+    point(random(width),random(height/3,height-300));
+    point(random(width),random(height/3,height-300));
+    point(random(width),random(height/3,height-300));
+    point(random(width),random(height/3,height-300));
+    point(random(width),random(height/3,height-300));
   }
-}*/
+}
 
 
 
@@ -158,8 +156,17 @@ void drawShip()
     a += 20;
   }
   
-  stroke(0,100,255,a);
-  fill(115,113,147,a);
+  strokeWeight(4);
+  if(music == true)
+  {
+    stroke(random(255),random(255),random(255));
+    fill(0);
+  }
+  else
+  {    
+    stroke(255,0,0,a);
+    fill(255,a);
+  }
   
   //Dashboard
   beginShape();
@@ -178,6 +185,7 @@ void drawShip()
 }
 
 float c = 0 ;
+boolean music = false;
 void mousePressed()
 {
     if((( mouseX > 100) && (mouseX <200)) && ((mouseY>100)&& (mouseY < 200)))
@@ -187,13 +195,32 @@ void mousePressed()
         c = random (0,255);
         file.rewind();
         file.play();
-        
+        music = true;
       }
       if(mouseButton == RIGHT)
       {
         c =0;
         file.pause();
+        music = false;
       }
     }
   
+}
+
+void hyperJump()
+{
+  stroke(random(0,255),random(0,255),random(0,255));
+  strokeWeight(6);
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
+  point(random(width),random(height));
 }

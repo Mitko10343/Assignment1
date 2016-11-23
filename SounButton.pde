@@ -15,7 +15,7 @@ class Button
     
     void drawButton()
     {
-      noStroke();
+      stroke(random(c),random(c),random(c));
       fill(random(c),random(c),random(c));
       rect(x,y,Width,Height);
       fill(255);

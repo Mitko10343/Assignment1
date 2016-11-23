@@ -22,6 +22,7 @@ class Radar
   {
      fill(0);
      stroke(76,2,152);
+     strokeWeight(6);
      ellipse(centerX,centerY,widthE,heightE);
   }
   
