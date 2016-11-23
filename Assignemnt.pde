@@ -1,5 +1,8 @@
 Fuel fuel_meter;
 Radar radar;
+Guns gun1;
+Guns gun2;
+Crosshair crosshair;
 
 void setup()
 {
@@ -8,6 +11,9 @@ void setup()
    
    fuel_meter = new Fuel(100,height-170,30,120,height-164);
    radar =new Radar(width-180,height-160,150,150,width-105,height-160);
+   gun1 =new Guns(400,height-300,50,100);
+   gun2 = new Guns(800,height-300,50,100);
+   crosshair = new Crosshair();
 }
 
 
@@ -33,6 +39,9 @@ void draw()
       radar.drawRadar();
       radar.rotateRadar();
       fuel_meter.drawFuel();
+      gun1.drawGuns();
+      gun2.drawGuns();
+      crosshair.crosshair();
       break;
     }
   }
@@ -153,8 +162,5 @@ void drawShip()
   endShape();
   
   arc(width/2,0,width*2,400,0,180);
-  //crosshair
-  noFill();
-  arc(width/2,height-300,300,200,radians(-180),radians(0));
-  line(width/2,height-300,width/2,height-400);
+  
 }
