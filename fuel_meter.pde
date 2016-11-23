@@ -4,6 +4,7 @@ class Fuel
   int Width,Height;
   int meterY;
   
+  
   Fuel(int x,int y,int Width, int Height,int meterY)
   {
      this.x = x;
@@ -11,6 +12,7 @@ class Fuel
      this.Width = Width;
      this.Height = Height;
      this.meterY = meterY;
+     
   }
   
   void drawFuel()
@@ -21,6 +23,7 @@ class Fuel
      rect(x,y,Width,Height);
      line(x,meterY,x+Width,meterY);
      text("FUEL" ,x,height-30);
+    
   }
   
   void fuelMeter()

@@ -7,7 +7,7 @@ class Radar
    int x2;
    int y2;
    float angle=10;
-
+   
   Radar(int centerX,int centerY,int widthE,int heightE,int x2,int y2)
   {
      this.centerX = centerX;
@@ -21,6 +21,7 @@ class Radar
   void drawRadar()
   {
      fill(0);
+     stroke(76,2,152);
      ellipse(centerX,centerY,widthE,heightE);
   }
   

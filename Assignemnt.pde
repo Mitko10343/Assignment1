@@ -1,13 +1,23 @@
+import ddf.minim.*;
+
+Minim minim;
+AudioPlayer file;
+
+
 Fuel fuel_meter;
 Radar radar;
 Guns gun1;
 Guns gun2;
 Crosshair crosshair;
+Button button;
 
 void setup()
 {
    size(1200,800);
    frameRate(60);
+   
+    minim = new Minim(this);
+    file = minim.loadFile("music.mp3");
    
    fuel_meter = new Fuel(100,height-170,30,120,height-164);
    radar =new Radar(width-180,height-160,150,150,width-105,height-160);
@@ -26,6 +36,7 @@ int back_ground =255;
 void draw()
 {
   background(back_ground);
+  button = new Button(100,100,70,50,c);
   switch(game_state)
   {
     case 0:
@@ -41,6 +52,7 @@ void draw()
       fuel_meter.drawFuel();
       gun1.drawGuns();
       gun2.drawGuns();
+      button.drawButton();
       crosshair.crosshair();
       break;
     }
@@ -162,5 +174,26 @@ void drawShip()
   endShape();
   
   arc(width/2,0,width*2,400,0,180);
+  
+}
+
+float c = 0 ;
+void mousePressed()
+{
+    if((( mouseX > 100) && (mouseX <200)) && ((mouseY>100)&& (mouseY < 200)))
+    {
+      if(mouseButton == LEFT)
+      {
+        c = random (0,255);
+        file.rewind();
+        file.play();
+        
+      }
+      if(mouseButton == RIGHT)
+      {
+        c =0;
+        file.pause();
+      }
+    }
   
 }

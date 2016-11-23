@@ -5,6 +5,7 @@ class Crosshair
     //crosshair
     noFill();
     noCursor();
+    stroke(255,0,0);
     strokeWeight(1);
     ellipse(mouseX,mouseY,20,20);
     ellipse(mouseX,mouseY,20,40);
