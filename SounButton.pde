@@ -19,6 +19,7 @@ class Button
       fill(random(c),random(c),random(c));
       rect(x,y,Width,Height);
       fill(255);
+      textSize(15);
       text("TUNES",x+20,y+30);      
     }
     

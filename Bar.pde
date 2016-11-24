@@ -20,6 +20,7 @@ class Bar
     rect(x,y,Width,Height);
     fill(0,255,0);
     rect(x,y,load,Height);
+    textSize(15);
     text("Speed is" + speed, x,y);
   }
   
@@ -35,6 +36,17 @@ class Bar
            load++;
            speed++;
          }
+         if(load >0 && meterzero == true)
+        {
+          if(frameCount % 3 == 0)
+          {
+            load--;
+            speed--; 
+          }
+          fill(255,0,0);
+            textSize(25);
+            text("NO FUEL!!!!",500,250);      
+        }
       }
      
     }

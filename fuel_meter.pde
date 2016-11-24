@@ -24,6 +24,7 @@ class Fuel
      rect(x,y,Width,Height);
      line(x,meterY,x+Width,meterY);
      fill(76,2,152);
+     textSize(15);
      text("FUEL" ,x,height-30);
     
   }
