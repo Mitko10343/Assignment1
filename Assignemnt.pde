@@ -30,7 +30,7 @@ void setup()
 
 
 
-
+Boolean meterzero = false;
 //Global variable for the hud state
 int game_state =0;
 //global variable for the background
@@ -232,10 +232,21 @@ void hyperJump()
   
   
 }
+
+int fade=0;
 void equaliser()
 {
-  //stroke(random(255),random(255),random(255));
-  strokeWeight(2);
+  if(music == true)
+  {
+     fade ++;
+     stroke(random(255),random(255),random(255),fade);
+     strokeWeight(2);
+  }
+  else
+  {
+    noStroke();
+    fade =0;
+  }
   for (int i = 0; i < file.bufferSize() - 1; i++)
   {
     float x1 = map(i, 0, file.bufferSize(), 500, width - 500);

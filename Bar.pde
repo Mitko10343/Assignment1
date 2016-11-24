@@ -30,7 +30,7 @@ class Bar
     {
       if(key == 'w' || key == 'W')
       {
-         if(load <Width)
+         if(load <Width && meterzero == false)
          {
            load++;
            speed++;
@@ -42,8 +42,11 @@ class Bar
       {
         if(load>0)
         {
-          load--;
-          speed--;
+          if(frameCount % 3 == 0)
+          {
+            load--;
+            speed--;
+          }
         }
       }
   }

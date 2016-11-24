@@ -38,6 +38,10 @@ class Fuel
              {
                meterY ++;
              }
+             else
+             {
+               meterzero = true;
+             }
           }
      
       }
@@ -46,6 +50,7 @@ class Fuel
          if(meterY > y+7)
          {
            meterY --;
+           meterzero = false;
          }
       }
   }
