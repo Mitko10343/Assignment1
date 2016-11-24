@@ -10,6 +10,7 @@ Guns gun1;
 Guns gun2;
 Crosshair crosshair;
 Button button;
+Bar speedBar;
 
 void setup()
 {
@@ -23,6 +24,7 @@ void setup()
    radar =new Radar(width-180,height-160,150,150,width-105,height-160);
    gun1 =new Guns(400,height-300,50,100);
    gun2 = new Guns(800,height-300,50,100);
+   speedBar = new Bar(200,70,300,50);
    crosshair = new Crosshair();
 }
 
@@ -62,6 +64,8 @@ void draw()
       gun2.drawGuns();
       button.drawButton();
       crosshair.crosshair();
+      speedBar.drawBar();
+      speedBar.loadingBar();
       break;
     }
   }
