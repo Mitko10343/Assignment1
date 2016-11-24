@@ -18,7 +18,7 @@ void setup()
    frameRate(60);
    
     minim = new Minim(this);
-    file = minim.loadFile("music.mp3");
+    file = minim.loadFile("music.mp3",512);
    
    fuel_meter = new Fuel(100,height-170,30,120,height-164);
    radar =new Radar(width-180,height-160,150,150,width-105,height-160);
@@ -51,12 +51,14 @@ void draw()
       if(music == true)
       {
         hyperJump();
+       // equaliser();
       }
       else
       {
          stars();
       }
       drawShip();
+      equaliser();
       radar.drawRadar();
       radar.rotateRadar();
       fuel_meter.drawFuel();
@@ -227,4 +229,19 @@ void hyperJump()
   point(random(width),random(height));
   point(random(width),random(height));
   point(random(width),random(height));
+  
+  
+}
+void equaliser()
+{
+  //stroke(random(255),random(255),random(255));
+  strokeWeight(2);
+  for (int i = 0; i < file.bufferSize() - 1; i++)
+  {
+    float x1 = map(i, 0, file.bufferSize(), 500, width - 500);
+    float x2 = map(i+1, 0, file.bufferSize(), 500, width - 500);
+    line(x1, 600 - file.mix.get(i)*100, x2, 600 - file.mix.get(i+1)*100);
+    line(x1, 750 - file.mix.get(i)*100, x2, 750 - file.mix.get(i+1)*100);
+    println(file.mix.get(i+1)*100);
+  }
 }

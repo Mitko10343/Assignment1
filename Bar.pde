@@ -36,7 +36,9 @@ class Bar
            speed++;
          }
       }
-      else
+     
+    }
+    else
       {
         if(load>0)
         {
@@ -44,6 +46,5 @@ class Bar
           speed--;
         }
       }
-    }
   }
 }

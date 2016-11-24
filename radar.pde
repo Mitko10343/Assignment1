@@ -7,6 +7,7 @@ class Radar
    int x2;
    int y2;
    float angle=10;
+   boolean music;
    
   Radar(int centerX,int centerY,int widthE,int heightE,int x2,int y2)
   {
@@ -16,6 +17,7 @@ class Radar
      this.heightE = heightE;
      this.x2 = x2;
      this.y2 = y2;
+     this.music =music;
   }
   
   void drawRadar()
@@ -31,6 +33,10 @@ class Radar
       if(second() %1 == 0)
       {
         angle += 0.1;
+      }
+      if(music == true)
+      {
+        angle +=.05;
       }
       pushMatrix();
       translate(centerX,centerY);
