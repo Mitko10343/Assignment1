@@ -24,7 +24,7 @@ void setup()
    radar =new Radar(width-180,height-160,150,150,width-105,height-160);
    gun1 =new Guns(400,height-300,50,100);
    gun2 = new Guns(800,height-300,50,100);
-   speedBar = new Bar(200,70,300,50);
+   speedBar = new Bar(450,600,300,50);
    crosshair = new Crosshair();
 }
 
@@ -247,12 +247,22 @@ void equaliser()
     noStroke();
     fade =0;
   }
+  
   for (int i = 0; i < file.bufferSize() - 1; i++)
   {
     float x1 = map(i, 0, file.bufferSize(), 500, width - 500);
     float x2 = map(i+1, 0, file.bufferSize(), 500, width - 500);
-    line(x1, 600 - file.mix.get(i)*100, x2, 600 - file.mix.get(i+1)*100);
-    line(x1, 750 - file.mix.get(i)*100, x2, 750 - file.mix.get(i+1)*100);
+    line(x1, 70 - file.mix.get(i)*100, x2, 70 - file.mix.get(i+1)*100);
+    line(x1, 120 - file.mix.get(i)*100, x2, 120 - file.mix.get(i+1)*100);
     println(file.mix.get(i+1)*100);
+    outline();
   }
+}
+
+void outline()
+{
+    line(500,20,700,20);
+    line(500,170,700,170);
+    line(500,20,500,170);
+    line(700,20,700,170);
 }

@@ -43,6 +43,9 @@ class Radar
       rotate(angle);
       stroke(0,255,0);
       line(0,0,50,50);
+      fill(0,255,0,100);
+      noStroke();
+      arc(-1,0,150,150,radians(360),radians(410));
       popMatrix();
    }
 }
