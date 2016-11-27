@@ -1,9 +1,11 @@
+//Import the lbrary for sound
 import ddf.minim.*;
 
+//Declare objects for the audio file to be ready into and to be played by
 Minim minim;
 AudioPlayer file;
 
-
+//Declaring all object names
 Fuel fuel_meter;
 Radar radar;
 Guns gun1;
@@ -14,59 +16,62 @@ Bar speedBar;
 
 void setup()
 {
+   //Creating screen size
    size(1200,800);
-   frameRate(60);
+   smooth();
    
+   //Creating the actuall objects that will play the file
    minim = new Minim(this);
-   file = minim.loadFile("music.mp3",512);
-   
-   fuel_meter = new Fuel(100,height-170,30,120,height-164);
-   radar =new Radar(width-140,height-110,150,150,width-105,height-160);
-   gun1 =new Guns(400,height-300,50,100);
-   gun2 = new Guns(800,height-300,50,100);
-   speedBar = new Bar(450,600,300,50);
-   crosshair = new Crosshair();
+   file = minim.loadFile("music.mp3",512);//File that is being loaded into object 'file'
+   //Creating other objects that will be used in the program
+   fuel_meter = new Fuel(100,height-170,30,120,height-164);//Fuel Meter object
+   radar =new Radar(width-140,height-110,150,150,width-105,height-160);//Radar object
+   gun1 =new Guns(400,height-300,50,100);//I used some polymorphism to create two objects of
+   gun2 = new Guns(800,height-300,50,100);//the same class
+   speedBar = new Bar(450,600,300,50);//Object for the speed bar
+   crosshair = new Crosshair();//object for the crosshair
+   button = new Button(100,100,70,50);//Object for the hyperjump button
 }
 
 
-
+//Global variable that will tell classes when the fuel has finished
 Boolean meterzero = false;
-//Global variable for the hud state
+//Global variable for the hud state , this will allow a transitoon between the loading screen into the actuall hud
 int game_state =0;
 //global variable for the background
 int back_ground =255;
 void draw()
 {
   background(back_ground);
-  button = new Button(100,100,70,50,c);
+  //Case statement  for transition between loading screen and HUD
   switch(game_state)
   {
-    case 0:
+    case 0: // if case is 0 that means the hud hasnt loaded and the loading screen is run
     {
       loadingScreen();
       break;
     }
-    case 1:
+    case 1://When case = 1 then the loading screen must have finished executing and now the HUD is being drawn and executed
     {
-      if(music == true)
+      if(music == true)//If music is turned on call function hyperJump which prints more stars and creates the effect of increased speed
       {
         hyperJump();
       }
       else
       {
-         stars();
+         stars();//Prints stars on the screen when the music is not on
       }
-      drawShip();
-      equaliser();
-      radar.drawRadar();
-      radar.rotateRadar();
-      fuel_meter.drawFuel();
-      gun1.drawGuns();
+      drawShip();//Draws the ship dashboard
+      equaliser();//Draws the Equaliser 
+      radar.drawRadar();//draws the radar
+      radar.rotateRadar();//rotates the radar
+      fuel_meter.drawFuel();//Draws the fuel meter
+      gun1.drawGuns();//Draws both guns
       gun2.drawGuns();
-      button.drawButton();
-      crosshair.crosshair();
-      speedBar.drawBar();
-      speedBar.loadingBar();
+      button.drawButton();//Draws the hyperjump button
+      speedBar.drawBar();//Draws the speed bar
+      speedBar.loadingBar();//Changes the speed of the speed bar when the acceleration button is pressed
+      crosshair.crosshair();//draws the crosshair
       break;
     }
   }

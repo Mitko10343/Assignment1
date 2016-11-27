@@ -4,13 +4,12 @@ class Button
     int Width,Height;
     float c;
     
-    Button(int x,int y,int Width,int Height, float c)
+    Button(int x,int y,int Width,int Height)
     {
       this.x = x;
       this.y = y;
       this.Width = Width;
       this.Height = Height;
-      this.c = c;
     }
     
     void drawButton()
@@ -18,7 +17,7 @@ class Button
       if(music == true)
       {
         stroke(0,255,0);
-        fill(random(c),random(c),random(c));
+        fill(random(255),random(255),random(255));
         rect(x,y,Width,Height);
         fill(255);
         textSize(15);
