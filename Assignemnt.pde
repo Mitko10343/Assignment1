@@ -17,11 +17,11 @@ void setup()
    size(1200,800);
    frameRate(60);
    
-    minim = new Minim(this);
-    file = minim.loadFile("music.mp3",512);
+   minim = new Minim(this);
+   file = minim.loadFile("music.mp3",512);
    
    fuel_meter = new Fuel(100,height-170,30,120,height-164);
-   radar =new Radar(width-180,height-160,150,150,width-105,height-160);
+   radar =new Radar(width-140,height-110,150,150,width-105,height-160);
    gun1 =new Guns(400,height-300,50,100);
    gun2 = new Guns(800,height-300,50,100);
    speedBar = new Bar(450,600,300,50);
@@ -51,7 +51,6 @@ void draw()
       if(music == true)
       {
         hyperJump();
-       // equaliser();
       }
       else
       {
@@ -87,28 +86,27 @@ void loadingScreen()
    text("Hold E",(width/2)-18,(height/2)+5);
    noFill();
    strokeWeight(4);
-   arc(width/2,height/2,100,100,0,theta);
+   arc(width/2,height/2,100,100,0,radians(theta));
     if(keyPressed)
     {
        if(key == 'e' || key == 'E');
        {
-           if(frameCount % 2 == 0)
-           {
-              theta ++;
-              println(theta);
-           }
+
+          theta += 5;
+          println(theta);
+
   
-          if(theta == 7)
+          if(theta == 360)
           {
-            loadComplete = true;
+             loadComplete = true;
           }
        }
     }
     else
     {
-       if(frameCount % 2 == 0 && (theta != 7 && theta >0))
+       if(frameCount % 2 == 0 && (loadComplete != true && theta >0))
        {
-          theta --;
+          theta -= 5;
        }
     }
      
@@ -156,7 +154,7 @@ void stars()
 int a=0;
 void drawShip()
 {
-  //stars();
+  stars();
   if(frameCount % 2 == 0 && (a !=255))
   {
     a += 20;
@@ -194,7 +192,7 @@ float c = 0 ;
 boolean music = false;
 void mousePressed()
 {
-    if((( mouseX > 100) && (mouseX <200)) && ((mouseY>100)&& (mouseY < 200)))
+    if((( mouseX > 100) && (mouseX <200)) && ((mouseY>100)&& (mouseY < 200)) && (game_state == 1))
     {
       if(mouseButton == LEFT)
       {
@@ -210,7 +208,7 @@ void mousePressed()
         music = false;
       }
     }
-  
+    
 }
 
 void hyperJump()
@@ -228,9 +226,7 @@ void hyperJump()
   point(random(width),random(height));
   point(random(width),random(height));
   point(random(width),random(height));
-  point(random(width),random(height));
-  
-  
+  point(random(width),random(height));  
 }
 
 int fade=0;
@@ -238,31 +234,31 @@ void equaliser()
 {
   if(music == true)
   {
-     fade ++;
+     fade++;
      stroke(random(255),random(255),random(255),fade);
      strokeWeight(2);
   }
   else
   {
     noStroke();
-    fade =0;
+    fade=0;
   }
   
   for (int i = 0; i < file.bufferSize() - 1; i++)
   {
-    float x1 = map(i, 0, file.bufferSize(), 500, width - 500);
-    float x2 = map(i+1, 0, file.bufferSize(), 500, width - 500);
+    float x1 = map(i, 0, file.bufferSize(), 400, width - 400);
+    float x2 = map(i+1, 0, file.bufferSize(),400, width - 400);
     line(x1, 70 - file.mix.get(i)*100, x2, 70 - file.mix.get(i+1)*100);
     line(x1, 120 - file.mix.get(i)*100, x2, 120 - file.mix.get(i+1)*100);
     println(file.mix.get(i+1)*100);
-    outline();
   }
+  outline();
 }
 
 void outline()
 {
-    line(500,20,700,20);
-    line(500,170,700,170);
-    line(500,20,500,170);
-    line(700,20,700,170);
+    line(400,20,800,20);
+    line(400,170,800,170);
+    line(400,20,400,170);
+    line(800,20,800,170);
 }

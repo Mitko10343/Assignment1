@@ -15,13 +15,22 @@ class Bar
   
   void drawBar()
   {
-    noStroke();
+    
     fill(0);
     rect(x,y,Width,Height);
-    fill(0,255,0);
+    if(music == true)
+    {
+      fill(0,255,0);
+      stroke(0,255,0);  
+    }
+    else
+    {
+      stroke(255,0,0);
+      fill(255,0,0);
+    }
     rect(x,y,load,Height);
     textSize(15);
-    text("Speed is" + speed, x,y);
+    text("Speed is" + speed, x+100,y);;
   }
   
   
@@ -43,9 +52,9 @@ class Bar
             load--;
             speed--; 
           }
-          fill(255,0,0);
+            fill(255,0,0);
             textSize(25);
-            text("NO FUEL!!!!",500,250);      
+            text("NO FUEL!!!!",550,250);      
         }
       }
      

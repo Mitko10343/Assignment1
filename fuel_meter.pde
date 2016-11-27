@@ -37,7 +37,10 @@ class Fuel
           {
              if(meterY < y+Height)
              {
-               meterY ++;
+               if(frameCount % 5 == 0)
+               {
+                 meterY ++;
+               }
              }
              else
              {
