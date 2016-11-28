@@ -40,10 +40,14 @@ class Bar
     {
       if(key == 'w' || key == 'W')
       {
+          
          if(load <Width && meterzero == false)
          {
-           load++;
-           speed++;
+           if(frameCount % 2 == 0 )
+           {
+             load ++;
+             speed++;
+           }
          }
          if(load >0 && meterzero == true)
         {

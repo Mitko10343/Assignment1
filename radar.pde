@@ -17,7 +17,6 @@ class Radar
      this.heightE = heightE;
      this.x2 = x2;
      this.y2 = y2;
-     this.music =music;
   }
   
   void drawRadar()

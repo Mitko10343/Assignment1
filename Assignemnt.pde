@@ -1,4 +1,4 @@
-//Import the lbrary for sound
+  //Import the lbrary for sound
 import ddf.minim.*;
 
 //Declare objects for the audio file to be ready into and to be played by
@@ -13,6 +13,7 @@ Guns gun2;
 Crosshair crosshair;
 Button button;
 Bar speedBar;
+Rpm rpmBar;
 
 void setup()
 {
@@ -31,6 +32,7 @@ void setup()
    speedBar = new Bar(450,600,300,50);//Object for the speed bar
    crosshair = new Crosshair();//object for the crosshair
    button = new Button(100,100,70,50);//Object for the hyperjump button
+   rpmBar = new Rpm(width/2,height,50,50);
 }
 
 
@@ -71,6 +73,8 @@ void draw()
       button.drawButton();//Draws the hyperjump button
       speedBar.drawBar();//Draws the speed bar
       speedBar.loadingBar();//Changes the speed of the speed bar when the acceleration button is pressed
+      rpmBar.rpmRender();
+      rpmBar.drawRpm();
       crosshair.crosshair();//draws the crosshair
       break;
     }
@@ -174,7 +178,7 @@ void drawShip()
   else
   {    
     stroke(255,0,0,a);
-    fill(255,a);
+    fill(140,a);
   }
   
   //Dashboard
