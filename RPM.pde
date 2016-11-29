@@ -1,3 +1,4 @@
+//Class for the Rpm barr
 class Rpm
 {
   int centerX,centerY;
@@ -13,6 +14,7 @@ class Rpm
     this.Height =Height;
   }
   
+  //draws the speed bar of 3 differen arcs
   void drawRpm()
   {
     noFill();
@@ -36,8 +38,12 @@ class Rpm
     text(i,width/2,height);
   }
   
+  //Increments the size of one arc so it appears as the RPMs increase as speed is increased
+  //when it gets to certain RPMs the gear is changed and the RPMs drop.
+  //if the RPms are falling then the gear is decreased and the RPMs rise
   void rpmRender()
   {
+    //RPMs increase when the W key is pressed
     if(keyPressed)
     {
       if(key == 'w' || key == 'W' && theta<360)
@@ -68,6 +74,7 @@ class Rpm
         }
       }
     }
+    //Rpms decrease as w key is released
     else
     {
       if(theta >180)

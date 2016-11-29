@@ -1,3 +1,5 @@
+//Class for guns
+//Originally the guns were meant to shoot things ,but I didnt get the time to finish them so they are just as an animation
 class Guns
 {
     int centerX;
@@ -13,6 +15,7 @@ class Guns
       this.Height = Height;
     }
     
+    //Draws the guns
     void drawGuns()
     {  
        noFill();

@@ -1,3 +1,4 @@
+//Class for drawing the speed bar
 class Bar
 {
   int x,y;
@@ -5,6 +6,7 @@ class Bar
   int load=0;
   int speed =0;
   
+  //constructor for speed bar
   Bar(int x, int y, int Width, int Height)
   {
     this.x = x;

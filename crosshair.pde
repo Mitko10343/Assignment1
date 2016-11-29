@@ -1,5 +1,7 @@
+//Just a class for the crosshair
 class Crosshair
 {
+  //Draws the crosshair
   void crosshair()
   {
     //crosshair

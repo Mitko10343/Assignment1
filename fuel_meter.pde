@@ -1,3 +1,4 @@
+//Class for the fuel meter
 class Fuel
 {
   int x,y;
@@ -15,6 +16,7 @@ class Fuel
      
   }
   
+  //Drawing the fuels meter as a rectangle with a line going across it to indicate fuel levels
   void drawFuel()
   {
      fuelMeter();
@@ -29,6 +31,8 @@ class Fuel
     
   }
   
+  //When W is pressed then the  Y coordinates of the gauge line are decremented
+  //when fuel levels hit 0 a warning message is displayed telling the user that he is out of fuel
   void fuelMeter()
   {
       if(keyPressed)
@@ -44,7 +48,7 @@ class Fuel
              }
              else
              {
-               meterzero = true;
+               meterzero = true;//when there is fuel this global variable is true telling other classes and methods
              }
           }
      
@@ -54,7 +58,7 @@ class Fuel
          if(meterY > y+7)
          {
            meterY --;
-           meterzero = false;
+           meterzero = false;//if the fuel levels are empty this variable tells other classes and methods
          }
       }
   }

@@ -85,26 +85,31 @@ void draw()
 
 
 
-
+//Gloabal variables for the transition of the loading screen so they are not reset to 0 every time the
+//draw function updates
 int text_color=0;
 float theta;
 boolean loadComplete =false;
 void loadingScreen()
 {
+  //Begin the loading screen with a message telling the user to hold E
    fill(text_color);
    text("Hold E",(width/2)-18,(height/2)+5);
    noFill();
    strokeWeight(4);
+   //Arc that will represent a loading bar
    arc(width/2,height/2,100,100,0,radians(theta));
+   //If uses presses E then the arc begins loping into a cricle
     if(keyPressed)
     {
        if(key == 'e' || key == 'E');
        {
-
+        
           theta += 5;
           println(theta);
 
-  
+          //If the arc makes a full circle the load is complete and loadComplete signals the program
+          //to begin transition into next screen
           if(theta == 360)
           {
              loadComplete = true;
@@ -113,21 +118,26 @@ void loadingScreen()
     }
     else
     {
+       //if the user stop holding e before the arc creates a full circle then the arc retracts 
        if(frameCount % 2 == 0 && (loadComplete != true && theta >0))
        {
           theta -= 5;
        }
     }
      
+    //if loadComplete is set to true the fade into the next screen begins
     if((loadComplete == true) && (back_ground !=0))
     {
-      back_ground -- ;
+      back_ground -- ;//background turns to black
     }
+    //if background is black ,the screen is cleared and a message is displayed to user
     if(back_ground == 0)
     {
       clear();
       text_color=255;
       text("Systems are now operational",(width/2)-100,height/2);
+      //after the message sticks for 3 seconds the game_state is set to one signaling the program to go into the next stage
+      //and begin drawing the HUD. this is done in the switch statement in the draw() function
       if(frameCount % (60*3) == 0)
       {
         game_state = 1;
@@ -139,12 +149,13 @@ void loadingScreen()
 
 
 
-
+//This function draws stars on the screen.
+//A bunch of pixels are drawn on random positions on the screen
 void stars()
 {
   if(frameCount % 10 == 0)
   {
-    strokeWeight(6);
+    strokeWeight(6);//make the pixels bigger so they are visible
     stroke(random(255),random(255),random(255));
     point(random(width),random(height/3,height-300));
     point(random(width),random(height/3,height-300));
@@ -159,16 +170,21 @@ void stars()
 
 
 
-
+//Variable that controls the opacity of the shapes of drawing the ship so it creates a smooth transition between screens
 int a=0;
+//draws the ship with a smooth transition
 void drawShip()
 {
+  //calls for stars to be drawn
   stars();
+  //Every 2 frames the opacity of the shapes that create the ship is increased
   if(frameCount % 2 == 0 && (a !=255))
   {
     a += 20;
   }
   
+  //If the music is playing then it gives the shapes random outlines and
+  //colors the inside black to create and effect of turned off lights in the ship
   strokeWeight(4);
   if(music == true)
   {
@@ -193,12 +209,15 @@ void drawShip()
     vertex(width,height);
   endShape();
   
+  //Uper dashboard layout
   arc(width/2,0,width*2,400,0,180);
   
 }
 
+//When the mouse is pressed on the button it opens a music file,rewind it and plays it
+//If the same button is right clicked it will stop playing the music
 float c = 0 ;
-boolean music = false;
+boolean music = false;//Global variable to tell the program if the music is on or off
 void mousePressed()
 {
     if((( mouseX > 100) && (mouseX <200)) && ((mouseY>100)&& (mouseY < 200)) && (game_state == 1))
@@ -208,18 +227,20 @@ void mousePressed()
         c = random (0,255);
         file.rewind();
         file.play();
-        music = true;
+        music = true;//sets music to true when the music is playing
       }
       if(mouseButton == RIGHT)
       {
         c =0;
         file.pause();
-        music = false;
+        music = false;//If music is paused it sets music to false to tell program music has stopped playing
       }
     }
     
 }
 
+//The hyper jump function displays a lot of pixes as if the spaceship has begun moving through way more stars faster.
+//creates a warp effect in a way
 void hyperJump()
 {
   stroke(random(0,255),random(0,255),random(0,255));
@@ -238,21 +259,27 @@ void hyperJump()
   point(random(width),random(height));  
 }
 
+//thats is the method for the sound waves
+//a variable so the sound wave sceen fades in as the music is turned on
 int fade=0;
 void equaliser()
 {
+  //if the music is true it begins displaying the sound waves
   if(music == true)
   {
      fade++;
      stroke(random(255),random(255),random(255),fade);
      strokeWeight(2);
   }
-  else
+  else//if music is not playing then the fade is set to 0 aka the opacity of the lines is set to 0 and the music screen doesnt show
   {
     noStroke();
     fade=0;
   }
   
+  //Maps a load of different lines according to the size of the music file
+  //Using the music files buffer size it creates a wavy effect as different parts of the 
+  //song are playing
   for (int i = 0; i < file.bufferSize() - 1; i++)
   {
     float x1 = map(i, 0, file.bufferSize(), 400, width - 400);
@@ -264,6 +291,7 @@ void equaliser()
   outline();
 }
 
+//otlines for the sound wave display
 void outline()
 {
     line(400,20,800,20);

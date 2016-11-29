@@ -3,7 +3,7 @@ Year 2 - OOP Assignemnt 1
 
 Written by:Dimiter Dinkov
 Student Number : C15334276
-Video Link:
+
 ---------------------------------------------------------------------------------------------
 \For my Object Oriented Programming(OOP) assignment we had to write a program for		    /
 \a HUD.The theme of the project was Sci Fi and I decided to create a dashboard				/
@@ -83,3 +83,10 @@ Things I didnt get to finish :(
 --------------------------------
 I would have like to add a bit more limitation to the speed of the ship when the RPMs
 of the ship went to the max.
+
+
+
+
+Video to assignment:
+-----------------------------------
+[![Video](http://img.youtube.com/vi/watch?v=aDer6RBOQx0&feature=youtu.be/0.jpg)](http://www.youtube.com/watch?v=watch?v=aDer6RBOQx0&feature=youtu.be)

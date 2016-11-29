@@ -1,3 +1,4 @@
+//Class for the radar
 class Radar
 {
    int centerX;
@@ -19,6 +20,7 @@ class Radar
      this.y2 = y2;
   }
   
+  //Draws radar otline
   void drawRadar()
   {
      fill(0);
@@ -27,6 +29,7 @@ class Radar
      ellipse(centerX,centerY,widthE,heightE);
   }
   
+  //Rotates a line around the  center of the circle
   void rotateRadar()
   {
       if(second() %1 == 0)
@@ -35,13 +38,13 @@ class Radar
       }
       if(music == true)
       {
-        angle +=.05;
+        angle +=0.5;
       }
       pushMatrix();
-      translate(centerX,centerY);
-      rotate(angle);
+      translate(centerX,centerY);//translate center to center of radar
+      rotate(angle);//rotate angle
       stroke(0,255,0);
-      line(0,0,50,50);
+      line(0,0,50,50);//line being rotated
       popMatrix();
    }
 }

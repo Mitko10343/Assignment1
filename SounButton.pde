@@ -1,3 +1,4 @@
+//class for the button that plays music
 class Button
 {
     int x,y;
@@ -12,6 +13,8 @@ class Button
       this.Height = Height;
     }
     
+    //If the music is playing then the button flashes random colors and displays the word stop
+    //if music is off then then the button is plain white and displays the words hyper jump
     void drawButton()
     {
       if(music == true)
