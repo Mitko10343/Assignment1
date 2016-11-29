@@ -4,18 +4,16 @@ Year 2 - OOP Assignemnt 1
 Written by:Dimiter Dinkov
 Student Number : C15334276
 Video Link:
-
-
-
-For my Object Oriented Programming(OOP) assignment we had to write a program for
-a HUD.The theme of the project was Sci Fi and I decided to create a dashboard
-for a spaceship.The dashboard of the space ship has a number of user interactive
-features such as acceleration,deceleration,playing of music, entering into a
-hyper jump etc.
-To make the Project I used proceduraly generated graphics,classes,polymorphism,
-loops,methods,switch statements, some trigonometry and more.I also
-went beyond the study we had done and added sound into the HUD.
-
+---------------------------------------------------------------------------------------------
+\For my Object Oriented Programming(OOP) assignment we had to write a program for		    /
+\a HUD.The theme of the project was Sci Fi and I decided to create a dashboard				/
+\for a spaceship.The dashboard of the space ship has a number of user interactive			/
+\features such as acceleration,deceleration,playing of music, entering into a				/
+\hyper jump etc.																			/
+\To make the Project I used proceduraly generated graphics,classes,polymorphism,			/
+\loops,methods,switch statements, some trigonometry and more.I also							/
+\went beyond the study we had done and added sound into the HUD.							/
+---------------------------------------------------------------------------------------------
 
 Key Features:
 ----------------------
@@ -52,3 +50,36 @@ state is now equal to 1).
 For displaying the ship I follow a similar slow fade transition that slowly fills in the
 color to all the spaceship components which creates an effect as if the user has just
 went into the ship and has now turned on all the light in the ship.
+
+
+Part3(HUD):
+----------------------
+Once the HUD has been generated then the user can begin interatcting with it.
+If the user presses the 'W' key the ship begins to gain speed and the fuel bar, 
+speed meter and the RPM meter begin moving.As the ship gains speed,the speed bar
+begins to light up and creates like a loading animation. When it gets to the end
+then it has reached maxed speed.Also above the speed bar the speed is displayed.
+The Fuel meter begins dropping levels as the speed increases. If the fuel meter hits zero
+a warning message is displayed and the ship speed begins to drop as it has ran out of fuel.
+If the user releases the accelerationg key then the fuel meter quickly fills up again 
+and the user can keep accelerating the speed.
+The RPM meter works almost like a speed meter,but it shows the user how hard the engine is
+working.Since the RPM meter is an arc, as the arc increases to a certain level the ship 
+switches gears and the RPM drops for a bit. If the user stops the movement of the ship, the RPM
+levels drop, and as the arc decreeses and reaches a certain level, then the ship switches to a 
+lower gear and the RPM increases. The RPM meter works just like the one in a car, and its purpose
+is to show the user how much harder the engine of the ship works as the speed increases.
+By far my most favourite part of the project is the 'Hyper Jump' button on the top left.
+When the user presses this button ,the lights in the ship go off ,except for the outlines of the
+ship's dashboard,they begin flashing. The scene change almost into a rave and then the music 
+comes on.The main feture of this is not really the music, but the screen that appears in the
+top dashboard of the ship. It consists of two sound lines , that bounce up and down to the
+beat of the music.
+The radar is in the bottom right of the ship. It is constantly rotating and scanning the 
+ships surroundings for incoming missiles.
+
+
+Things I didnt get to finish :(
+--------------------------------
+I would have like to add a bit more limitation to the speed of the ship when the RPMs
+of the ship went to the max.
