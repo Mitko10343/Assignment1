@@ -3,6 +3,7 @@ Year 2 - OOP Assignemnt 1
 
 Written by:Dimiter Dinkov
 Student Number : C15334276
+Video Link:https://www.youtube.com/watch?v=aDer6RBOQx0&feature=youtu.be
 
 ---------------------------------------------------------------------------------------------
 \For my Object Oriented Programming(OOP) assignment we had to write a program for		    /
@@ -87,6 +88,6 @@ of the ship went to the max.
 
 
 
-Video to assignment:
+Video to assignment (THE IMAGE DOESENT WORK BUT JUST CLICK THE ERROR IMAGE AND IT SHOULD REDIRECT YOU TO THE VIDEO):
 -----------------------------------
 [![Video](http://img.www.youtube.com/vi/watch?v=aDer6RBOQx0&feature=youtu.be/0.jpg)](https://www.youtube.com/watch?v=aDer6RBOQx0&feature=youtu.be)
