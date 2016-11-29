@@ -89,4 +89,4 @@ of the ship went to the max.
 
 Video to assignment:
 -----------------------------------
-[![Video](http://img.youtube.com/vi/watch?v=aDer6RBOQx0&feature=youtu.be/0.jpg)](http://www.youtube.com/watch?v=watch?v=aDer6RBOQx0&feature=youtu.be)
+[![Video](http://img.youtube.com/vi/watch?v=aDer6RBOQx0&feature=youtu.be/0.jpg)](https://www.youtube.com/watch?v=aDer6RBOQx0&feature=youtu.be)
